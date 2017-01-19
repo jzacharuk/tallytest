@@ -7,7 +7,7 @@ module.exports = {
         "import"
     ],
     "rules": {
-      "require-jsdoc": ["warn", {
+      "require-jsdoc": [1, {
           "require": {
               "FunctionDeclaration": true,
               "MethodDefinition": true,
@@ -15,6 +15,6 @@ module.exports = {
               "ArrowFunctionExpression": false
           }
       }],
-      "valid-jsdoc": "warn"
+      "valid-jsdoc": 1
     }
 };
