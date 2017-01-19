@@ -1,4 +1,4 @@
-sudo: false
+sudo: required # FIXME: Should we need this?
 language: node_js
 node_js:
   - "node" # latest stable Node.js release
