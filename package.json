@@ -1,0 +1,31 @@
+{
+  "name": "tally",
+  "version": "1.0.0",
+  "description": "Communicates with HDC Central to update and execute aggregate queries against the Vault.",
+  "main": "index.js",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json",
+    "start": "node index.js",
+    "test": "mocha ./test/*.spec.js"
+  },
+  "author": "Jonathan Zacharuk <jonathan.zacharuk@ascentech.ca>",
+  "license": "GPLv3",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "async": "^2.1.2",
+    "pg": "^6.1.0",
+    "winston": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hdcbc/tally.git"
+  }
+}
