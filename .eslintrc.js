@@ -7,14 +7,14 @@ module.exports = {
         "import"
     ],
     "rules": {
-      "require-jsdoc": [1, {
-          "require": {
-              "FunctionDeclaration": true,
-              "MethodDefinition": true,
-              "ClassDeclaration": false,
-              "ArrowFunctionExpression": false
-          }
-      }],
-      "valid-jsdoc": 1
+      // "require-jsdoc": [1, {
+      //     "require": {
+      //         "FunctionDeclaration": true,
+      //         "MethodDefinition": true,
+      //         "ClassDeclaration": false,
+      //         "ArrowFunctionExpression": false
+      //     }
+      // }],
+      // "valid-jsdoc": 1
     }
 };
