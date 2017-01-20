@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "doc": "jsdoc -c jsdoc.json",
+    "lint": "eslint **/*.js",
     "start": "node index.js",
     "test": "istanbul cover --report lcov --include-all-sources node_modules/mocha/bin/_mocha -- ./test/*.spec.js"
   },
