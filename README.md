@@ -6,3 +6,9 @@
 # Tally
 
 TBD
+
+###Commands
+
+npm run doc Will generate documentation based off of jsdocs comments.
+npm start Will run the application.
+npm test Will run automated unit tests and display the results.
