@@ -1,5 +1,7 @@
 const logger = require('winston');
 
+const config = require('../config/central-config');
+
 /**
  * This module will provide the interface with the Central Server.
  *
@@ -7,7 +9,7 @@ const logger = require('winston');
  * @param {Object} logger - An instance of a logger.
  * @module central
  */
-module.exports = (function central(cfg) {
+module.exports = (function central() {
   const myUpdates = [
       { version: 1, statement: 'INSERT INTO indicator.concept (name) VALUES (\'diabetes\');' },
       { version: 2, statement: 'INSERT INTO indicator.concept (name) VALUES (\'chronic kidney\');' },

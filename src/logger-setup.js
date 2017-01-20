@@ -2,14 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const winston = require('winston');
 
-const config = require('../config/config-logger');
+const config = require('../config/logger-config');
 
 /**
  * @module logger
  */
 module.exports = (function loggerModule() {
   // Create the log directory if it does not already exist
-  // Because winston is too lazy to do it.
+  // Because Winston is too lazy to do it. Thanks Winston.
   const logDir = path.dirname(config.file.filename);
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir);

@@ -1,6 +1,6 @@
 /**
  * This module will contain all of the configuration information for the logger.
- * @module config
+ * @module config-logger
  */
 module.exports = {
   console: {

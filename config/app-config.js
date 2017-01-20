@@ -1,6 +1,6 @@
 /**
  * This module will contain all of the configuration information for the application in general.
- * @module config
+ * @module config-app
  */
 module.exports = {
   /**

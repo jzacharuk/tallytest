@@ -1,7 +1,7 @@
 const logger = require('winston');
 const pg = require('pg');
 
-const config = require('../config/config-database');
+const config = require('../config/vault-config');
 
 /**
  * @module database
@@ -10,12 +10,12 @@ module.exports = (function databaseModule() {
   // Initialize the pool of connections that will be used to connect to the database.
   const pool = new pg.Pool(config.connection);
 
+  /**
+   * If a client is idle in the pool and receives an error (for example when Postgres restarts),
+   * the pool will catch the error and let you handle it here.
+   */
   pool.on('error', (err, client) => {
-    // FIXME: Handle error.
-    logger.error('THERE WAS A POOL ERROR!', err, client);
-    // if a client is idle in the pool
-    // and receives an error - for example when your PostgreSQL server restarts
-    // the pool will catch the error & let you handle it here
+    logger.error('database.onPoolError', err, client);
   });
 
   /**

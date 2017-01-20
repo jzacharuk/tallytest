@@ -1,6 +1,6 @@
 /**
  * This module will contain all of the configuration information for the database.
- * @module config
+ * @module config-database
  */
 module.exports = {
   // Refer to https://github.com/brianc/node-postgres

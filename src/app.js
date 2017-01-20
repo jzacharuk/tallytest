@@ -8,7 +8,7 @@ const logger = require('winston');
 
 // Import the local modules.
 const central = require('./central');
-const config = require('../config/config-app');
+const config = require('../config/app-config');
 const vault = require('./vault');
 
 /**
