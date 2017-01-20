@@ -1,5 +1,6 @@
-// Configure the logger. This should be loaded before any of the modules that rely on winston.
-require('./logger');
+// Setup the logger based on configuration.
+// This should be loaded before any of the modules that rely on winston.
+require('./logger-setup');
 
 // Import remote modules
 const async = require('async');
@@ -16,7 +17,7 @@ const vault = require('./vault');
  *
  * @module app
  */
-module.exports = function app() {
+module.exports = (function app() {
   /**
    * This function will perform the specified updates against the Universal Schema.
    * <br/><br/>
@@ -98,7 +99,9 @@ module.exports = function app() {
   function queryPerform(queryList, callback) {
     logger.debug('app.queryPerform()', queryList);
 
-    async.mapLimit(queryList, config.maxParallelQueries, vault.performAggregateQuery, (err, results) => {
+    const limit = config.maxParallelQueries;
+
+    async.mapLimit(queryList, limit, vault.performAggregateQuery, (err, results) => {
       callback(err, results);
     });
   }
@@ -166,4 +169,4 @@ module.exports = function app() {
   return {
     run,
   };
-};
+}());
