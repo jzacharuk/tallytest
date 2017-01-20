@@ -1,3 +1,5 @@
+LABEL maintainer "jonathan.zacharuk@ascentech.ca"
+
 FROM node:7.4
 
 # Create app directory
