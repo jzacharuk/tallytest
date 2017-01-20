@@ -64,8 +64,6 @@ module.exports = function vault(db, logger) {
       // first parameter of the callback, we are including it in the results
       // object. This is because we are running a bunch of queries at the same
       // time and if an error is returned then they will all instantly stop.
-
-      // FIXME: Should we validate that only aggregates were returned here? Probably!
       callback(null, { query, error, results });
     });
   }
