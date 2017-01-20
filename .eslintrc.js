@@ -1,19 +1,16 @@
 module.exports = {
-  extends: 'airbnb',
+  extends: 'airbnb-base',
   installedESLint: true,
   plugins: [
-    'react',
-    'jsx-a11y',
     'import',
   ],
   rules: {
     'require-jsdoc': [1, {
-      'require': {
-        'ClassDeclaration': false,
-        'MethodDefinition': true,
-        'FunctionDeclaration': true,
-        // 'ArrowFunctionExpression': false,
-      }
+      require: {
+        ClassDeclaration: true,
+        MethodDefinition: true,
+        FunctionDeclaration: true,
+      },
     }],
     'valid-jsdoc': 1,
   },
