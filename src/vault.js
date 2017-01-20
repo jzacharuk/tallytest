@@ -1,13 +1,16 @@
+const logger = require('winston');
+
+const db = require('./database');
+
 /**
  * This module will provide the interface with the Vault. All queries and updates that hit the Vault
  * including the Indicator, Concept, and Universal schema are run through this module. Furthermore
  * it should all run through functions in the API schema.
  *
  * @param {Object} db - An instance of the database module.
- * @param {Object} logger - An instance of a logger.
  * @module vault
  */
-module.exports = function vault(db, logger) {
+module.exports = (function vault() {
   function sanitizeAggregate(row = {}) {
     const clean = {};
     clean.count = Number.isInteger(row.count) ? row.count : null;
@@ -123,4 +126,4 @@ module.exports = function vault(db, logger) {
     performUpdate,
     retrieveVersion,
   };
-};
+}());

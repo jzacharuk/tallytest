@@ -1,12 +1,14 @@
+// Configure the logger. This should be loaded before any of the modules that rely on winston.
+require('./logger');
+
 // Import remote modules
 const async = require('async');
+const logger = require('winston');
 
-// Import local modules, passing in logger and configuration as needed.
-const config = require('./config');
-const logger = require('./logger')(config.loggerOptions);
-const database = require('./database')(config.databaseOptions, logger);
-const vault = require('./vault')(database, logger);
-const central = require('./central')(config.centralOptions, logger);
+// Import the local modules.
+const central = require('./central');
+const config = require('../config/config-app');
+const vault = require('./vault');
 
 /**
  * This module is the backbone of the application. It contains the the majority of the business
@@ -15,11 +17,6 @@ const central = require('./central')(config.centralOptions, logger);
  * @module app
  */
 module.exports = function app() {
-  /**
-   * The number of queries to run against the Universal Schema in parallel.
-   */
-  const NUM_PARALLEL_QUERIES = 5;
-
   /**
    * This function will perform the specified updates against the Universal Schema.
    * <br/><br/>
@@ -33,7 +30,7 @@ module.exports = function app() {
    * @returns {void}
    */
   function updatePeform(updates, callback) {
-    logger.debug('updatePeform()', updates);
+    logger.debug('app.updatePeform()', updates);
 
     async.series(updates, vault.performUpdate, (err) => {
       callback(err);
@@ -54,7 +51,7 @@ module.exports = function app() {
    * @returns {void}
    */
   function updateBatch(callback) {
-    logger.debug('updateBatch()');
+    logger.debug('app.updateBatch()');
 
     async.waterfall([
       vault.retrieveVersion,
@@ -74,7 +71,7 @@ module.exports = function app() {
    * @returns {void}
    */
   function updateAll(callback) {
-    logger.debug('updateAll()');
+    logger.debug('app.updateAll()');
 
     async.forever(updateBatch, (err) => {
       // Hide the 'fake' update complete error.
@@ -99,9 +96,9 @@ module.exports = function app() {
    * @returns {void}
    */
   function queryPerform(queryList, callback) {
-    logger.debug('queryPerform()', queryList);
+    logger.debug('app.queryPerform()', queryList);
 
-    async.mapLimit(queryList, NUM_PARALLEL_QUERIES, vault.performAggregateQuery, (err, results) => {
+    async.mapLimit(queryList, config.maxParallelQueries, vault.performAggregateQuery, (err, results) => {
       callback(err, results);
     });
   }
@@ -120,7 +117,7 @@ module.exports = function app() {
    * @returns {void}
    */
   function queryBatch(callback) {
-    logger.debug('queryBatch()');
+    logger.debug('app.queryBatch()');
 
     async.waterfall([
       central.requestQueries,
@@ -138,7 +135,7 @@ module.exports = function app() {
    * @returns {void}
    */
   function queryAll(callback) {
-    logger.debug('queryAll()');
+    logger.debug('app.queryAll()');
 
     async.forever(queryBatch, (err) => {
       // Hide the 'fake' queries complete error.
@@ -151,14 +148,14 @@ module.exports = function app() {
   }
 
   function run() {
-    logger.debug('run()');
+    logger.debug('app.run()');
 
     async.series([
       updateAll,
       queryAll,
     ], (err) => {
       if (err) {
-        logger.error('ERROR', err);
+        logger.error('The application encountered a fatal error', err);
         process.exit(1);
       }
 

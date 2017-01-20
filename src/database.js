@@ -1,12 +1,14 @@
+const logger = require('winston');
 const pg = require('pg');
+
+const config = require('../config/config-database');
 
 /**
  * @module database
  */
-module.exports = function databaseModule(dbCfg, logger) {
-  // Initialize the pool of connections that will be used to connect to the
-  // Universal Schema
-  const pool = new pg.Pool(dbCfg.connection);
+module.exports = (function databaseModule() {
+  // Initialize the pool of connections that will be used to connect to the database.
+  const pool = new pg.Pool(config.connection);
 
   pool.on('error', (err, client) => {
     // FIXME: Handle error.
@@ -48,7 +50,7 @@ module.exports = function databaseModule(dbCfg, logger) {
   }
 
   /**
-   * Run a query against the Universal Schema.
+   * Run a query against the database.
    */
   function runQuery(query, params, type, callback) {
     logger.debug('database.runQuery()');
@@ -83,4 +85,4 @@ module.exports = function databaseModule(dbCfg, logger) {
     parseRows,
     runQuery,
   };
-};
+}());

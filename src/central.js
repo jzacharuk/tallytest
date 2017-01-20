@@ -1,3 +1,5 @@
+const logger = require('winston');
+
 /**
  * This module will provide the interface with the Central Server.
  *
@@ -5,7 +7,7 @@
  * @param {Object} logger - An instance of a logger.
  * @module central
  */
-module.exports = function central(cfg, logger) {
+module.exports = (function central(cfg) {
   const myUpdates = [
       { version: 1, statement: 'INSERT INTO indicator.concept (name) VALUES (\'diabetes\');' },
       { version: 2, statement: 'INSERT INTO indicator.concept (name) VALUES (\'chronic kidney\');' },
@@ -82,7 +84,7 @@ module.exports = function central(cfg, logger) {
     logger.debug('central.sendResults()', results);
 
     // Append the new results to our overall list of results
-    myResults.push.apply(myResults, results);
+    myResults.push(...results);
 
     callback(null, null);
   }
@@ -94,4 +96,4 @@ module.exports = function central(cfg, logger) {
     NO_UPDATES_FOUND,
     NO_QUERIES_FOUND,
   };
-};
+}());
