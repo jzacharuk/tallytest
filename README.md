@@ -43,7 +43,7 @@ To browse the documentation open the docs/index.html page.
 #### Testing
 This project has automated test files that are written using Chai, run using Mocha and coverage reports created using Istanbul. The following command will run the tests, outputting the results to the console, and generate the coverage report.
 ```sh
-$ npm run test
+$ npm test
 ```
 To browse the coverage report open the coverage/index.html page.
 
