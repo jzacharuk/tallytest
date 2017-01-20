@@ -12,7 +12,7 @@ module.exports = {
         'ClassDeclaration': false,
         'MethodDefinition': true,
         'FunctionDeclaration': true,
-        'ArrowFunctionExpression': false,
+        // 'ArrowFunctionExpression': false,
       }
     }],
     'valid-jsdoc': 1,
