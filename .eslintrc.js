@@ -8,12 +8,12 @@ module.exports = {
   ],
   rules: {
     'require-jsdoc': [1, {
-        'require': {
-            'FunctionDeclaration': true,
-            'MethodDefinition': true,
-            'ClassDeclaration': false,
-            'ArrowFunctionExpression': false
-        }
+      'require': {
+        'ClassDeclaration': false,
+        'MethodDefinition': true,
+        'FunctionDeclaration': true,
+        'ArrowFunctionExpression': false,
+      }
     }],
     'valid-jsdoc': 1,
   },
