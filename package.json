@@ -6,7 +6,7 @@
   "scripts": {
     "doc": "jsdoc -c jsdoc.json",
     "start": "node index.js",
-    "test": "istanbul cover --report lcov node_modules/mocha/bin/_mocha -- ./test/*.spec.js"
+    "test": "istanbul cover --report lcov --include-all-sources node_modules/mocha/bin/_mocha -- ./test/*.spec.js"
   },
   "author": "Jonathan Zacharuk <jonathan.zacharuk@ascentech.ca>",
   "license": "GPLv3",
