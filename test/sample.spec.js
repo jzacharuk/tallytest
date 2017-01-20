@@ -39,8 +39,5 @@ describe('Vault', () => {
 
       assert.deepEqual(actual, expected);
     });
-    it('Should fail', () => {
-      assert.deepEqual(true, false);
-    });
   });
 });
