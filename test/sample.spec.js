@@ -1,7 +1,7 @@
 const chai = require('chai');
 
 const assert = chai.assert;
-const vault = require('../src/vault')();
+const vault = require('../src/vault');
 
 describe('Vault', () => {
   it('Should not return non-aggregate data');
