@@ -6,7 +6,7 @@
   "scripts": {
     "doc": "jsdoc -c jsdoc.json",
     "start": "node index.js",
-    "test": "mocha ./test/*.spec.js"
+    "test": "istanbul cover --report lcov node_modules/mocha/bin/_mocha -- ./test/*.spec.js"
   },
   "author": "Jonathan Zacharuk <jonathan.zacharuk@ascentech.ca>",
   "license": "GPLv3",
@@ -17,6 +17,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0"
   },
   "dependencies": {
