@@ -2,11 +2,11 @@
 // This should be loaded before any of the modules that rely on winston.
 require('./logger-setup');
 
-// Import remote modules
+// Import npm modules.
 const async = require('async');
 const logger = require('winston');
 
-// Import the local modules.
+// Import local modules.
 const central = require('./central');
 const config = require('../config/app-config');
 const vault = require('./vault');
