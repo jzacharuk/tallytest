@@ -32,6 +32,7 @@ The project follows the Airbnb styleguide and uses eslint to enforce the rules. 
 ```sh
 $ npm run lint
 ```
+Although the above command can be run manually, it is recommended to configure your code editor to show you style errors in real time. 
 
 #### Documentation
 This project utilized jsdoc style comments throughout the code. The following command will create a docs folder and generate html documentation based on those comments:
