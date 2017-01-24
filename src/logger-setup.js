@@ -24,6 +24,4 @@ module.exports = (function loggerModule() {
   });
 
   winston.debug('Logger configured');
-
-  return winston;
 }());
